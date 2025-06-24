@@ -1,4 +1,4 @@
-import asyncio
+import os
 from contextlib import asynccontextmanager
 from typing import Union
 
@@ -33,7 +33,7 @@ app = FastAPI(lifespan=lifespan)
 app.add_middleware(get_middleware())
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=[os.environ.get("DEV_FRONTEND"), os.environ.get("PROD_FRONTEND")],
     allow_credentials=True,
     allow_methods=["GET", "PUT", "POST", "DELETE", "OPTIONS", "PATCH"],
     allow_headers=["Content-Type"] + get_all_cors_headers(),
