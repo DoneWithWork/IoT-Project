@@ -43,6 +43,7 @@ export const frontendConfig = (): SuperTokensConfig => {
       SessionReact.init({
         sessionTokenBackendDomain:
           process.env.NODE_ENV === "production" ? ".onrender.com" : undefined,
+        tokenTransferMethod: "header",
       }),
       ThirdParty.init({
         signInAndUpFeature: {
