@@ -1,0 +1,100 @@
+// database
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+// generator
+generator client {
+    provider             = "prisma-client-py"
+    recursive_type_depth = 5
+}
+
+model User {
+    id       String    @id
+    username String
+    email    String
+    profile  String
+    api_keys ApiKey[]
+    projects Project[]
+}
+
+enum ApiKeyType {
+    READ
+    READ_WRITE
+}
+
+enum DeviceType {
+    ESP32
+    ESP8266
+    NODEMCU
+    HIBISCUS_SENSE
+}
+
+model ApiKey {
+    id        Int        @id @default(autoincrement())
+    key       String
+    User      User?      @relation(fields: [userId], references: [id])
+    initial   String
+    userId    String?
+    type      ApiKeyType
+    name      String     @default("API Key")
+    createdAt DateTime   @default(now())
+    updatedAt DateTime   @updatedAt
+
+    @@index([userId])
+}
+
+model Project {
+    id     String  @id @default(uuid())
+    User   User?   @relation(fields: [userId], references: [id])
+    userId String?
+
+    title       String   @default("API Key")
+    description String   @default("Description of project")
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+    devices     Device[]
+
+    @@index([userId])
+}
+
+model Device {
+    id String @id @default(uuid())
+
+    name            String
+    description     String
+    deviceType      DeviceType
+    Project         Project?     @relation(fields: [projectId], references: [id])
+    deviceAuthToken String
+    projectId       String
+    createdAt       DateTime     @default(now())
+    updatedAt       DateTime     @updatedAt
+    dataStreams     DataStream[]
+
+    @@index([projectId])
+}
+
+model DataStream {
+    id          Int         @id @default(autoincrement())
+    Device      Device      @relation(fields: [deviceId], references: [id])
+    deviceId    String
+    title       String
+    description String
+    dataPoints  DataPoint[]
+    createdAt   DateTime    @default(now())
+    updatedAt   DateTime    @updatedAt
+
+    @@index([deviceId, title])
+}
+
+model DataPoint {
+    id           Int        @id @default(autoincrement())
+    dataStream   DataStream @relation(fields: [dataStreamId], references: [id])
+    dataStreamId Int
+    value        String
+    type         String
+    createdAt    DateTime   @default(now())
+
+    @@index([dataStreamId])
+}

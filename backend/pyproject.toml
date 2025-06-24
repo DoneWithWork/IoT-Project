@@ -1,0 +1,13 @@
+[project]
+name = "backend"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "bcrypt>=4.3.0",
+    "fastapi[standard]>=0.115.13",
+    "paho-mqtt>=2.1.0",
+    "prisma>=0.15.0",
+    "supertokens-python>=0.29.2",
+]
