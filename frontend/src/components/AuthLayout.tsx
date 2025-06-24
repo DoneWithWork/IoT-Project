@@ -9,8 +9,7 @@ import { ReactNode } from "react";
 import { SessionAuthForNextJS } from "./sessionAuthForNextJs";
 
 const client = jwksClient({
-  jwksUri:
-    "https://st-dev-147e6d90-0d75-11f0-92b9-259bfedb9391.aws.supertokens.io/.well-known/jwks.json",
+  jwksUri: `${process.env.NEXT_PUBLIC_CONNECTION_URL}/.well-known/jwks.json`,
 });
 
 async function getAccessToken() {
