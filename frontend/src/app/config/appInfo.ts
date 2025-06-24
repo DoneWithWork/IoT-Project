@@ -1,5 +1,7 @@
 
-console.log(process.env.NEXT_PUBLIC_DEV_BACKEND_URL)
+console.log(process.env.NODE_ENV === "development"
+  ? process.env.NEXT_PUBLIC_DEV_FRONTEND_URL!
+  : process.env.NEXT_PUBLIC_PROD_FRONTEND_URL!)
 export const appInfo = {
   appName: "iot_project",
   apiDomain:

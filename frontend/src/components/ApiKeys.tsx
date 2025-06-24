@@ -4,6 +4,7 @@ import React from "react";
 import { DataTable } from "./tables/data-table";
 import { ApiKeysColumn } from "./tables/ApiKeysColumns";
 import NewApiKeyBtn from "./NewApiKeyBtn";
+import { returnUrl } from "@/lib/data";
 
 async function getAccessToken() {
   const cookiesStore = await cookies();
@@ -12,7 +13,7 @@ async function getAccessToken() {
 async function fetchAllApiKeys() {
   const accessToken = await getAccessToken();
 
-  const response = await fetch("http://localhost:8080/api/user/api-keys", {
+  const response = await fetch(`${returnUrl()}/api/user/api-keys`, {
     method: "GET",
     headers: {
       Authorization: "Bearer " + accessToken,

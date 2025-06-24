@@ -1,4 +1,4 @@
-function returnUrl() {
+export function returnUrl() {
     if (process.env.NODE_ENV === "development") {
         return process.env.NEXT_PUBLIC_DEV_BACKEND_URL
     } else {

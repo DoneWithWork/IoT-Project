@@ -1,5 +1,6 @@
 "use server"
 
+import { returnUrl } from "@/lib/data";
 import { ApiKeySchema } from "@/lib/schema";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
@@ -18,7 +19,7 @@ export async function NewApiKeyAction(prevState: unknown, formData: FormData) {
     }
     const accessToken = await getAccessToken();
 
-    const newProject = await fetch('http://localhost:8080/api/user/new-api-key', {
+    const newProject = await fetch(`${returnUrl()}/api/user/new-api-key`, {
         method: "POST",
         headers: {
             /**

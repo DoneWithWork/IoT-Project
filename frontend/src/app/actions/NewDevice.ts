@@ -1,5 +1,6 @@
 "use server"
 
+import { returnUrl } from "@/lib/data";
 import { DeviceSchema } from "@/lib/schema";
 import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
@@ -21,7 +22,7 @@ export async function NewDeviceActions(prevState: unknown, formData: FormData) {
         return { errors: parsed.error.flatten().fieldErrors }
     }
     const accessToken = await getAccessToken();
-    const newProject = await fetch('http://localhost:8080/api/user/new-device', {
+    const newProject = await fetch(`${returnUrl()}/api/user/new-device`, {
         method: "POST",
         headers: {
 

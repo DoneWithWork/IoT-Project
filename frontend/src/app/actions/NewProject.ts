@@ -1,5 +1,6 @@
 "use server"
 
+import { returnUrl } from "@/lib/data";
 import { formSchema } from "@/lib/schema";
 import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
@@ -11,7 +12,7 @@ async function getAccessToken() {
 }
 export async function NewProjectAction(values: z.infer<typeof formSchema>) {
     const accessToken = await getAccessToken();
-    const newProject = await fetch('http://localhost:8080/api/user/new-project', {
+    const newProject = await fetch(`${returnUrl()}/api/user/new-project`, {
         method: "POST",
         headers: {
             Authorization: 'Bearer ' + accessToken,
