@@ -31,6 +31,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(lifespan=lifespan)
 
 app.add_middleware(get_middleware())
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[os.environ.get("DEV_FRONTEND"), os.environ.get("PROD_FRONTEND")],

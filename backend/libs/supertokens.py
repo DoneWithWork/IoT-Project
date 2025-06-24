@@ -54,7 +54,10 @@ def setup_supertokens():
         framework="fastapi",
         recipe_list=[
             dashboard.init(),
-            session.init(),  # initializes session features
+            session.init(
+                cookie_domain=".onrender.com" if not isDev else None,
+                older_cookie_domain="",
+            ),  # initializes session features
             emailpassword.init(),
             thirdparty.init(
                 override=thirdparty.InputOverrideConfig(

@@ -40,7 +40,10 @@ export const frontendConfig = (): SuperTokensConfig => {
     defaultToSignUp: false,
     recipeList: [
       EmailPasswordReact.init(),
-      SessionReact.init(),
+      SessionReact.init({
+        sessionTokenBackendDomain:
+          process.env.NODE_ENV === "production" ? ".onrender.com" : undefined,
+      }),
       ThirdParty.init({
         signInAndUpFeature: {
           providers: [Github.init(), Google.init()],
