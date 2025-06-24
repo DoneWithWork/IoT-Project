@@ -19,6 +19,14 @@ from supertokens_python.recipe.thirdparty.types import RawUserInfoFromProvider
 from typing import Dict, Any, Optional, Union
 from supertokens_python.recipe.session.interfaces import SessionContainer
 import os
+from supertokens_python.framework import BaseRequest
+
+
+def get_token_transfer_method(
+    req: BaseRequest, for_create_new_session: bool, user_context: Dict[str, Any]
+):
+    # OR use session.init(get_token_transfer_method=lambda *_: "header")
+    return "header"
 
 
 def setup_supertokens():
@@ -57,6 +65,7 @@ def setup_supertokens():
             session.init(
                 cookie_domain=".onrender.com" if not isDev else None,
                 older_cookie_domain="",
+                get_token_transfer_method=get_token_transfer_method,
             ),  # initializes session features
             emailpassword.init(),
             thirdparty.init(
