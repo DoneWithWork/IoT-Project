@@ -41,6 +41,7 @@ def setup_supertokens():
 
     isDev = os.environ.get("RUN_MODE") == "dev"
     init(
+        debug=True,
         app_info=InputAppInfo(
             app_name="iot_project",
             api_domain=os.environ.get("DEV_BACKEND")

@@ -38,6 +38,7 @@ export const frontendConfig = (): SuperTokensConfig => {
       return undefined;
     },
     defaultToSignUp: false,
+    enableDebugLogs: true,
     recipeList: [
       EmailPasswordReact.init(),
       SessionReact.init({
