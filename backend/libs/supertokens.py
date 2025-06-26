@@ -30,8 +30,16 @@ def get_token_transfer_method(
 
 
 def setup_supertokens():
-    SUPERTOKENS_API_KEY = os.environ.get("SUPERTOKENS_API_KEY")
-    SUPERTOKENS_URL = os.environ.get("SUPERTOKENS_URL")
+    SUPERTOKENS_API_KEY = (
+        os.environ.get("SUPERTOKENS_DEV_API_KEY")
+        if os.environ.get("RUN_MODE") == "dev"
+        else os.environ.get("SUPERTOKENS_PROD_API_KEY")
+    )
+    SUPERTOKENS_URL = (
+        os.environ.get("SUPERTOKENS_DEV_URL")
+        if os.environ.get("RUN_MODE") == "dev"
+        else os.environ.get("SUPERTOKENS_PROD_URL")
+    )
 
     GOOGLE_CLIENT_SECRET = os.environ.get("GOOGLE_CLIENT_SECRET")
     GOOGLE_CLIENT_ID = os.environ.get("GOOGLE_CLIENT_ID")
@@ -64,9 +72,9 @@ def setup_supertokens():
         recipe_list=[
             dashboard.init(),
             session.init(
-                cookie_domain=".onrender.com" if not isDev else None,
-                older_cookie_domain="",
-                get_token_transfer_method=get_token_transfer_method,
+                # cookie_domain=".onrender.com" if not isDev else None,
+                # older_cookie_domain="",
+                # get_token_transfer_method=get_token_transfer_method,
             ),  # initializes session features
             emailpassword.init(),
             thirdparty.init(

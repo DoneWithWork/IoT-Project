@@ -8,8 +8,12 @@ import jwksClient from "jwks-rsa";
 import { ReactNode } from "react";
 import { SessionAuthForNextJS } from "./sessionAuthForNextJs";
 
+const url =
+  process.env.NODE_ENV === "production"
+    ? process.env.NEXT_PUBLIC__PROD_CONNECTION_URL
+    : process.env.NEXT_PUBLIC__DEV_CONNECTION_URL;
 const client = jwksClient({
-  jwksUri: `${process.env.NEXT_PUBLIC_CONNECTION_URL}/.well-known/jwks.json`,
+  jwksUri: `${url}/.well-known/jwks.json`,
 });
 
 async function getAccessToken() {
