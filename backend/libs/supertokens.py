@@ -72,7 +72,7 @@ def setup_supertokens():
         recipe_list=[
             dashboard.init(),
             session.init(
-                cookie_domain="onrender.com" if isDev else None,
+                cookie_domain="onrender.com" if not isDev else None,
                 cookie_same_site="none",
                 cookie_secure=not isDev,
             ),  # initializes session features
