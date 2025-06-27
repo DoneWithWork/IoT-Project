@@ -46,6 +46,7 @@ export const frontendConfig = (): SuperTokensConfig => {
           process.env.NODE_ENV === "production"
             ? "iot-project-4545.onrender.com"
             : undefined,
+        tokenTransferMethod: "header",
       }),
       ThirdParty.init({
         signInAndUpFeature: {
