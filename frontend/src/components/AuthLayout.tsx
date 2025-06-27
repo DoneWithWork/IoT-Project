@@ -10,8 +10,8 @@ import { SessionAuthForNextJS } from "./sessionAuthForNextJs";
 
 const url =
   process.env.NODE_ENV === "production"
-    ? process.env.NEXT_PUBLIC__PROD_CONNECTION_URL
-    : process.env.NEXT_PUBLIC__DEV_CONNECTION_URL;
+    ? process.env.NEXT_PUBLIC_PROD_CONNECTION_URL
+    : process.env.NEXT_PUBLIC_DEV_CONNECTION_URL;
 const client = jwksClient({
   jwksUri: `${url}/.well-known/jwks.json`,
 });
