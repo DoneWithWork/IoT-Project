@@ -43,9 +43,7 @@ export const frontendConfig = (): SuperTokensConfig => {
       EmailPasswordReact.init(),
       SessionReact.init({
         sessionTokenBackendDomain:
-          process.env.NODE_ENV === "production"
-            ? "iot-project-4545.onrender.com"
-            : undefined,
+          process.env.NODE_ENV === "production" ? "onrender.com" : undefined,
         tokenTransferMethod: "header",
       }),
       ThirdParty.init({
