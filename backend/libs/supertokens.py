@@ -30,14 +30,15 @@ def get_token_transfer_method(
 
 
 def setup_supertokens():
+    isDev = os.environ.get("RUN_MODE") == "dev"
     SUPERTOKENS_API_KEY = (
         os.environ.get("SUPERTOKENS_DEV_API_KEY")
-        if os.environ.get("RUN_MODE") == "dev"
+        if isDev
         else os.environ.get("SUPERTOKENS_PROD_API_KEY")
     )
     SUPERTOKENS_URL = (
         os.environ.get("SUPERTOKENS_DEV_URL")
-        if os.environ.get("RUN_MODE") == "dev"
+        if isDev
         else os.environ.get("SUPERTOKENS_PROD_URL")
     )
 
@@ -47,7 +48,6 @@ def setup_supertokens():
     GITHUB_CLIENT_ID = os.environ.get("GITHUB_CLIENT_ID")
     GITHUB_CLIENT_SECRET = os.environ.get("GITHUB_CLIENT_SECRET")
 
-    isDev = os.environ.get("RUN_MODE") == "dev"
     init(
         debug=True,
         app_info=InputAppInfo(
@@ -62,9 +62,6 @@ def setup_supertokens():
             website_base_path="/auth",
         ),
         supertokens_config=SupertokensConfig(
-            # We use try.supertokens for demo purposes.
-            # At the end of the tutorial we will show you how to create
-            # your own SuperTokens core instance and then update your config.
             connection_uri=SUPERTOKENS_URL,
             api_key=SUPERTOKENS_API_KEY,
         ),

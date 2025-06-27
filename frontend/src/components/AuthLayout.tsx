@@ -44,14 +44,6 @@ async function verifyToken(token: string): Promise<JwtPayload> {
   });
 }
 
-/**
- * A helper function to retrieve session details on the server side.
- *
- * NOTE: This function does not use the getSession / verifySession function from the supertokens-node SDK
- * because those functions may update the access token. These updated tokens would not be
- * propagated to the client side properly, as request interceptors do not run on the server side.
- * So instead, we use regular JWT verification library
- */
 async function getSSRSessionHelper(): Promise<{
   accessTokenPayload: JwtPayload | undefined;
   hasToken: boolean;

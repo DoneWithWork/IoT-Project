@@ -42,9 +42,8 @@ export const frontendConfig = (): SuperTokensConfig => {
     recipeList: [
       EmailPasswordReact.init(),
       SessionReact.init({
-        // sessionTokenBackendDomain:
-        //   process.env.NODE_ENV === "production" ? ".onrender.com" : undefined,
-        // tokenTransferMethod: "header",
+        sessionTokenBackendDomain:
+          process.env.NODE_ENV === "production" ? "onrender.com" : undefined,
       }),
       ThirdParty.init({
         signInAndUpFeature: {
