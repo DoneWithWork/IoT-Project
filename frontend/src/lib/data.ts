@@ -1,3 +1,5 @@
+import { unstable_cache } from "next/cache";
+
 export function returnUrl() {
     if (process.env.NODE_ENV === "development") {
         return process.env.NEXT_PUBLIC_DEV_BACKEND_URL
@@ -33,5 +35,13 @@ export async function postData<S>(accessToken: string, url: string, values: S) {
         body: JSON.stringify(values)
     });
     return response
+
+}
+
+export const getCachedDevice = unstable_cache(
+    async (userId, deviceId) => GetDevice({ userId, deviceId }),
+    (deviceId: string) => [deviceId]
+)
+export async function GetDevice({ userId, deviceId }: { userId: string, deviceId: string }) {
 
 }

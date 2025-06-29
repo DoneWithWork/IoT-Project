@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import { Separator } from "@/components/ui/separator";
 import { fetchData } from "@/lib/data";
 import { DevicesType } from "@/lib/types";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 async function getAccessToken() {
@@ -14,15 +15,18 @@ export default async function DevicePage({
   params: Promise<{ deviceId: string; projectId: string }>;
 }) {
   const { deviceId, projectId } = await params;
-  const accessToken = await getAccessToken();
-  if (!accessToken) {
-    redirect("/auth");
+  const {isAuthenticated,getUser} = await getKindeServerSession()
+  const user = await getUser();
+  if(!isAuthenticated || !user){
+    redirect("/api/auth/login")
   }
-  const device = await fetchData<DevicesType>(
-    accessToken,
-    `/api/user/device/${projectId}/${deviceId}`,
-    "device"
-  );
+    
+  const device = 
+  // const device = await fetchData<DevicesType>(
+  //   accessToken,
+  //   `/api/user/device/${projectId}/${deviceId}`,
+  //   "device"
+  // );
   return (
     <div className="px-3 py-3">
       <Header>Device: {device.name}</Header>

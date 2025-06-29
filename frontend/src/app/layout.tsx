@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import PageLoader from "@/components/PageLoader";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
 import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
-import { SuperTokensProvider } from "@/components/superTokensProvider";
-import PageLoader from "@/components/PageLoader";
+import { AuthProvider } from "./AuthProvider";
+import "./globals.css";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -29,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <SuperTokensProvider>
+      <AuthProvider>
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
@@ -44,7 +44,7 @@ export default function RootLayout({
           </ThemeProvider>
           <Toaster />
         </body>
-      </SuperTokensProvider>
+      </AuthProvider>
     </html>
   );
 }

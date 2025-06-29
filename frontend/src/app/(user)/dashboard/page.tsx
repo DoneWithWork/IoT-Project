@@ -1,9 +1,13 @@
-import React from 'react'
+import db from "@/lib/prisma";
+import React from "react";
 
-export default function UserDashboard() {
+export default async function UserDashboard() {
+  const users = await db.user.findMany();
   return (
     <div>
-      
+      {users.map((user, index) => (
+        <div key={index}>{user.email}</div>
+      ))}
     </div>
-  )
+  );
 }
