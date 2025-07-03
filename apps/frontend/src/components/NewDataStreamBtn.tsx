@@ -6,7 +6,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Device } from "@prisma/client";
+import { Device } from "@repo/db";
 import { Plus } from "lucide-react";
 import NewDataStreamForm from "./forms/NewDataStreamForm";
 import { Button } from "./ui/button";

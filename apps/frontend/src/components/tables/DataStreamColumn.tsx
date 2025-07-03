@@ -3,7 +3,7 @@
 import { DeleteDataStreamAction } from "@/app/actions/DeleteDataStreamAction";
 import { initialState } from "@/lib/constants";
 import { DeleteDataStreamSchema } from "@/lib/schema";
-import { DataStream } from "@prisma/client";
+import { DataStream } from "@repo/db";
 import { ColumnDef, Row } from "@tanstack/react-table";
 import { Eye } from "lucide-react";
 import Link from "next/link";

@@ -1,4 +1,4 @@
-import { User } from "@prisma/client";
+import { User } from "@repo/db";
 import React from "react";
 import { DataTable } from "../tables/data-table";
 import { AdminUsersColumns } from "../tables/AdminUsersColumns";

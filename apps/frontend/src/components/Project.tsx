@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { DataStream, Device } from "@prisma/client";
+import { DataStream, Device } from "@repo/db";
 import { Suspense } from "react";
 import Grid from "./Grid";
 import { LoadingCom } from "./Loader";

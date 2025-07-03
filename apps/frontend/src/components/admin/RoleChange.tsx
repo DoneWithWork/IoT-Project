@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/select";
 import { useWarnIfUnsavedChanges } from "@/hooks/use-prevent-unsaved-transition";
 import { UserRoleSchema } from "@/lib/schema";
-import { User } from "@prisma/client";
+import { User } from "@repo/db";
 import { useActionState, useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import { Button } from "../ui/button";

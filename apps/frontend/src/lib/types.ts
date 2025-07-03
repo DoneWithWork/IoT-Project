@@ -1,4 +1,4 @@
-import { ApiKey } from "@prisma/client";
+import { ApiKey } from "@repo/db";
 
 export type ProjectType = {
     title: string;

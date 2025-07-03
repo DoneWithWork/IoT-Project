@@ -12,7 +12,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { DataStreamSchema } from "@/lib/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Device } from "@prisma/client";
+import { Device } from "@repo/db";
 import { Loader2 } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useActionState, useEffect } from "react";

@@ -1,4 +1,4 @@
-import { Device } from "@prisma/client";
+import { Device } from "@repo/db";
 import NewDeviceBtn from "./NewDeviceBtn";
 import { DataTable } from "./tables/data-table";
 import { DeviceColumn } from "./tables/DeviceColumn";

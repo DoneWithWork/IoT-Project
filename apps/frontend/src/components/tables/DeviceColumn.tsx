@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/tooltip";
 import { initialState } from "@/lib/constants";
 import { DeleteDeviceSchema } from "@/lib/schema";
-import { Device } from "@prisma/client";
+import { Device } from "@repo/db";
 import { ColumnDef, Row } from "@tanstack/react-table";
 import { Copy, CopyCheck, Eye } from "lucide-react";
 import Link from "next/link";

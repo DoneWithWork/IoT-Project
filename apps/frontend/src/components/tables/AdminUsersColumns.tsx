@@ -1,6 +1,6 @@
 "use client";
 
-import { User } from "@prisma/client";
+import { User } from "@repo/db";
 import { ColumnDef } from "@tanstack/react-table";
 import { Eye } from "lucide-react";
 import Link from "next/link";
