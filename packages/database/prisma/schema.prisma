@@ -1,0 +1,108 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+model User {
+    id        String    @id
+    username  String
+    email     String
+    profile   String
+    role      String    @default("student")
+    api_keys  ApiKey[]
+    projects  Project[]
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @default(now()) @updatedAt
+}
+
+enum ApiKeyType {
+    READ
+    READ_WRITE
+}
+
+enum DeviceType {
+    ESP32
+    ESP8266
+    NODEMCU
+    HIBISCUS_SENSE
+}
+
+model ApiKey {
+    id        String     @id @default(uuid())
+    key       String
+    User      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+    initial   String
+    userId    String
+    type      ApiKeyType
+    name      String     @default("API Key")
+    createdAt DateTime   @default(now())
+    updatedAt DateTime   @updatedAt
+
+    @@index([userId])
+}
+
+model Project {
+    id     String @id @default(uuid())
+    User   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+    userId String
+
+    title       String   @default("API Key")
+    description String   @default("Description of project")
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+    devices     Device[]
+
+    @@index([userId])
+}
+
+model Device {
+    id String @id @default(uuid())
+
+    name            String
+    description     String
+    deviceType      DeviceType
+    Project         Project      @relation(fields: [projectId], references: [id], onDelete: Cascade)
+    deviceAuthToken String
+    projectId       String
+    createdAt       DateTime     @default(now())
+    updatedAt       DateTime     @updatedAt
+    dataStreams     DataStream[]
+
+    @@index([projectId])
+}
+
+model DataStream {
+    id          String      @id @default(uuid())
+    Device      Device      @relation(fields: [deviceId], references: [id], onDelete: Cascade)
+    deviceId    String
+    title       String
+    description String
+    dataPoints  DataPoint[]
+    createdAt   DateTime    @default(now())
+    updatedAt   DateTime    @updatedAt
+
+    @@index([deviceId, title])
+}
+
+model DataPoint {
+    id           String     @id @default(uuid())
+    dataStream   DataStream @relation(fields: [dataStreamId], references: [id], onDelete: Cascade)
+    dataStreamId String
+    value        String
+    type         String
+    createdAt    DateTime   @default(now())
+
+    @@index([dataStreamId])
+}
