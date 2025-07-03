@@ -39,6 +39,9 @@ importers:
       '@kinde-oss/kinde-auth-nextjs':
         specifier: ^2.8.1
         version: 2.8.2(eslint@9.30.1(jiti@2.4.2))(next@15.3.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.3)
+      '@prisma/nextjs-monorepo-workaround-plugin':
+        specifier: ^6.11.0
+        version: 6.11.0
       '@radix-ui/react-collapsible':
         specifier: ^1.1.11
         version: 1.1.11(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -882,6 +885,9 @@ packages:
 
   '@prisma/get-platform@6.11.0':
     resolution: {integrity: sha512-yspBGvOfJQwuoApk5B4aBlHDy6YDXAOe4Ml8U2eZ+M2b7fDd10YDomS3Q4qrYHUUVYF3TJyN86NcnRMOvCMUrA==}
+
+  '@prisma/nextjs-monorepo-workaround-plugin@6.11.0':
+    resolution: {integrity: sha512-4WwMkpuMIfJM1uPVjJQ5jCUrS+9icSc7SMI138o4J101FeLNy2b4hkiRdOEYcK+AX1cL5Ft40W3aJ5EDBjI39Q==}
 
   '@radix-ui/number@1.1.1':
     resolution: {integrity: sha512-MkKCwxlXTgz6CFoJx3pCwn07GKp36+aZyu/u2Ln2VrA5DcdyCZkASEDBTd8x5whTQQL5CiYf4prXKLcgQdv29g==}
@@ -5164,6 +5170,8 @@ snapshots:
   '@prisma/get-platform@6.11.0':
     dependencies:
       '@prisma/debug': 6.11.0
+
+  '@prisma/nextjs-monorepo-workaround-plugin@6.11.0': {}
 
   '@radix-ui/number@1.1.1': {}
 

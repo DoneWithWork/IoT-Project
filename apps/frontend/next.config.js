@@ -1,4 +1,6 @@
 // next.config.js
+const { PrismaPlugin } = require('@prisma/nextjs-monorepo-workaround-plugin')
+
 const createJiti = require('jiti');
 const jiti = createJiti(__filename);
 
@@ -19,6 +21,13 @@ const nextConfig = {
         
       }
     ],
+  },
+   webpack: (config, { isServer }) => {
+    if (isServer) {
+      config.plugins = [...config.plugins, new PrismaPlugin()]
+    }
+
+    return config
   },
 };
 
