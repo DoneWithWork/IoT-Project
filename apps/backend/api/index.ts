@@ -108,5 +108,7 @@ app.onError((err, c) => {
   console.error(`${err}`)
   return c.text('Custom Error Message', 500)
 })
+export const runtime = 'nodejs'
 
-export default handle(app)
+export const GET = handle(app)
+export const POST = handle(app)
