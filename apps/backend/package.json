@@ -1,13 +1,17 @@
 {
   "name": "backend",
   "scripts": {
-    "start": "vercel dev",
+    "start": "vercel dev --listen 8080",
     "deploy": "vercel"
   },
   "dependencies": {
-    "hono": "^4.8.3"
+    "@hono/swagger-ui": "^0.5.2",
+    "@hono/zod-openapi": "^0.19.9",
+    "@repo/db": "workspace:*",
+    "hono": "^4.8.4"
   },
   "devDependencies": {
-    "vercel": "^44.2.11"
+    "@types/node": "^24.0.10",
+    "vercel": "^32.4.1"
   }
 }

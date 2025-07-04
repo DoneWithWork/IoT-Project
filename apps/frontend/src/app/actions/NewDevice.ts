@@ -31,7 +31,7 @@ export async function NewDeviceActions(prevState: unknown, formData: FormData) {
     })
     if (!Project) return { success: false, errors: {} }
     const key = await generateApiKey();
-    const token = `${(Project.title).toLocaleLowerCase().replace(" ", "_")}_auth_token_${key}`
+    const token = `${(Project.title).toLocaleLowerCase().replace(" ", "_")}_device_auth_token_${key}`
     const newDevice = await db.device.create({
         data: {
             name,

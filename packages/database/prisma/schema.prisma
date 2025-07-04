@@ -82,7 +82,7 @@ model DataStream {
     id          String      @id @default(uuid())
     Device      Device      @relation(fields: [deviceId], references: [id], onDelete: Cascade)
     deviceId    String
-    title       String
+    title       String      @unique
     description String
     dataPoints  DataPoint[]
     createdAt   DateTime    @default(now())
