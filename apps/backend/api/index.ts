@@ -12,9 +12,6 @@ import { timeout } from 'hono/timeout'
 import { handle } from 'hono/vercel'
 import { DataStreamRoute } from './route.js'
 
-export const config = {
-  runtime: 'edge'
-}
 
 const app = new OpenAPIHono({ strict: true }).basePath('/api')
 
