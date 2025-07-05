@@ -71,10 +71,12 @@ app.openapi(DataStreamRoute, async (c) => {
   })
   if (!Device) return c.json({ message: "Failed to find device for this deviceAuthToken", success: false }, 404)
 
-  const streamMap = new Map(Device.dataStreams.map(ds => [ds.title, ds.id]))
+  const dataStreams = Device.dataStreams as { title: string; id: string }[]
+
+  const streamMap = new Map(dataStreams.map(ds => [ds.title, ds.id]))
 
   let unknownKeys: string[] = []
-  let values: Array<{ value: string; dataStreamId: string, type: string }> = []
+  let values = []
 
   Object.entries(data).forEach(([key, value]) => {
     const dataStreamId = streamMap.get(key)

@@ -4,9 +4,9 @@
     "module": "nodenext",
     "moduleResolution": "nodenext",
     "esModuleInterop": true,
+    "noEmit": true,
     "skipLibCheck": true,
     "strict": true,
-    "baseUrl": ".",
-
-  },
+    "baseUrl": "."
+  }
 }
