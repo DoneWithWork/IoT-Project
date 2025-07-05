@@ -1,5 +1,5 @@
 import { createRoute, z } from '@hono/zod-openapi'
-import { DataStreamSchema, DataStreamSchemaResponse } from './schema'
+import { DataStreamSchema, DataStreamSchemaResponse } from './schema.js'
 
 export const DataStreamRoute = createRoute({
     method: 'post',

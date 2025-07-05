@@ -2,7 +2,7 @@
   "name": "backend",
   "type": "module",
   "scripts": {
-    "start": "vercel dev --listen 8080",
+    "server": "vercel dev --listen 8080",
     "deploy": "vercel"
   },
   "dependencies": {
@@ -13,6 +13,7 @@
   },
   "devDependencies": {
     "@types/node": "^24.0.10",
+       "@repo/typescript-config": "workspace:*",
     "vercel": "^32.4.1"
   }
 }

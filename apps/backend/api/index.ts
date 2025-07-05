@@ -1,6 +1,5 @@
 import { swaggerUI } from '@hono/swagger-ui'
 import { OpenAPIHono } from '@hono/zod-openapi'
-import { db } from '@repo/db'
 import type { Context } from 'hono'
 import { every } from 'hono/combine'
 import { cors } from 'hono/cors'
@@ -12,7 +11,7 @@ import { timeout } from 'hono/timeout'
 import { handle } from 'hono/vercel'
 import { DataStreamRoute } from './route.js'
 
-
+import { db } from "@repo/db";
 const app = new OpenAPIHono({ strict: true }).basePath('/api')
 
 const customTimeoutException = (context: Context): HTTPException =>

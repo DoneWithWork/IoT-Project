@@ -3,7 +3,7 @@
   "ui": "tui",
   "tasks": {
     "build": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["^build","^db:generate"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
       "outputs": [".next/**", "!.next/cache/**","./generated/**"],
           "env": ["DATABASE_URL","CLERK_WEBHOOK_SIGNING_SECRET","ENCRYPTION_KEY","CLERK_SECRET_KEY","NODE_ENV"]
@@ -16,6 +16,7 @@
       "dependsOn": ["^check-types"]
     },
     "server": {
+      "dependsOn": ["^db:generate"],
       "cache": false,
       "persistent": true
     },

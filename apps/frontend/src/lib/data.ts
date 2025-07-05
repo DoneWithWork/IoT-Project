@@ -1,4 +1,4 @@
-import { DataStream } from "@repo/db";
+import type { DataStream } from "@repo/db";
 import { unstable_cache } from "next/cache";
 import { db } from "@repo/db";
 import { ApiKeyExtend, CachedDeviceType, DevicesByProjectType, ProjectTypeData } from "./types";

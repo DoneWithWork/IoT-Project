@@ -1,2 +1,2 @@
-export { db } from './client' // exports instance of prisma 
-export * from "../generated/prisma" // exports generated types from prisma
+export { db } from './client.ts';
+export * from '../generated/prisma/index.js';
